@@ -23,9 +23,10 @@ class Syllables
 
     len = 0
 
-    if word[-3..-1] == 'ing' then
+    ending_matched = word[/(ing|io)$/]
+    if ending_matched then
       len += 1
-      word = word[0...-3]
+      word = word[0..-(ending_matched.length)]
     end
 
     got = word.scan(Tokenizer)
